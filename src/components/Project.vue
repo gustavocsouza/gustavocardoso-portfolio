@@ -67,7 +67,7 @@ const getIcon = (tech) => {
             </div>
         </div>
         <div class="image-container">
-            <img :src="project.imgUrl" alt="Rick And Morty App">
+            <img :src="project.img_url" alt="Rick And Morty App">
         </div>
     </div>
     
@@ -75,7 +75,7 @@ const getIcon = (tech) => {
 
 <style scoped>
 .container {
-    width: 60vw;
+    width: 60rem;
     margin: auto;
     display: flex;
     gap: 4rem;

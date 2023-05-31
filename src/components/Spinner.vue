@@ -19,7 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: transparent;
+  opacity: 0.5;
 }
 .wave {
   width: 5px;

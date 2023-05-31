@@ -1,9 +1,20 @@
 <script setup>
 import { ref } from 'vue';
 import gsap from 'gsap';
+import { storeToRefs } from 'pinia';
 import Observer from './Observer.vue';
 import Project from './Project.vue';
-import { projects } from '../store/projects';
+import Spinner from './Spinner.vue';
+
+import { useProjectStore } from '../store/projects';
+
+
+const projectStore = useProjectStore();
+const { projects } = storeToRefs(projectStore);
+
+setTimeout(() => {
+    projectStore.getProjects();
+}, 4000)
 
 const showProjects = ref(false);
 
@@ -26,21 +37,24 @@ const enter = (el) => {
 </script>
 
 <template>
-    <div class="projects-container">
-        <Observer @intersect="intersect"/>
-        <TransitionGroup
-            appear
-            @before-enter="beforeEnter"
-            @enter="enter"
-        >
-            <Project 
-                v-if="showProjects"
-                v-for="project in projects" 
-                :key="project.id"
-                :project="project"
-                :data-index="project.id"
-            />
-        </TransitionGroup>
+    <div>
+        <Spinner v-if="!projects"></Spinner>
+        <div v-else class="projects-container">
+            <Observer @intersect="intersect"/>
+            <TransitionGroup
+                appear
+                @before-enter="beforeEnter"
+                @enter="enter"
+            >
+                <Project 
+                    v-if="showProjects"
+                    v-for="project in projects" 
+                    :key="project.id"
+                    :project="project"
+                    :data-index="project.id"
+                />
+            </TransitionGroup>
+        </div>
     </div>
 </template>
 

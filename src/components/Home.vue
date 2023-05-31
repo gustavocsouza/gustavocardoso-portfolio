@@ -192,7 +192,7 @@ const enterTechnologies = (el) => {
 
 @media only screen and (max-width: 960px) {
     .container {
-        gap: 4rem;
+        gap: 12rem;
     }
 }
 </style>

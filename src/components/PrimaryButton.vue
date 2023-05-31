@@ -37,7 +37,7 @@ a {
     height: 49px;
     background: transparent;
     border-radius: 48px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     opacity: 0.7;
 }
 
